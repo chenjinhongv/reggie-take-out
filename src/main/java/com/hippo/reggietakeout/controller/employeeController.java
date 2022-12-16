@@ -65,10 +65,10 @@ public class employeeController {
     public R<String> register(HttpServletRequest request, @RequestBody Employee questEmployee){
 
         // 补齐表字段
-        questEmployee.setCreateTime(LocalDateTime.now());
-        questEmployee.setUpdateTime(LocalDateTime.now());
-        questEmployee.setCreateUser((long)request.getSession().getAttribute("employee"));
-        questEmployee.setUpdateUser((long)request.getSession().getAttribute("employee"));
+//        questEmployee.setCreateTime(LocalDateTime.now());
+//        questEmployee.setUpdateTime(LocalDateTime.now());
+//        questEmployee.setCreateUser((long)request.getSession().getAttribute("employee"));
+//        questEmployee.setUpdateUser((long)request.getSession().getAttribute("employee"));
         questEmployee.setPassword(DigestUtils.md5DigestAsHex(DEFAULT_PASSWORD.getBytes()));
         employeeMapper.insert(questEmployee);
         return R.success("created user "+ questEmployee.getUsername());
@@ -98,8 +98,8 @@ public class employeeController {
     @PutMapping
     public R<String> changeStatus(HttpServletRequest request, @RequestBody Employee questEmployee){
         // 设置更新人，更新时间
-        questEmployee.setUpdateTime(LocalDateTime.now());
-        questEmployee.setUpdateUser((Long) request.getSession().getAttribute("employee"));
+//        questEmployee.setUpdateTime(LocalDateTime.now());
+//        questEmployee.setUpdateUser((Long) request.getSession().getAttribute("employee"));
         int i = employeeMapper.updateById(questEmployee);
         return R.success("succeed");
     }

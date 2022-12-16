@@ -1,22 +1,17 @@
 package com.hippo.reggietakeout.entity;
 
+
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Employee implements Serializable {
-
-    private static final long serialVersionUID=1L;
+public class Category implements Serializable {
     private Long id;
+    private short type;
     private String name;
-    private String username;
-    private String password;
-    private String phone;
-    private String sex;
-    private String idNumber;
-    private Integer Status;
+    private short sort;
     @TableField(fill = FieldFill.INSERT) // 插入时自动填充
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE) // 更新和插入时自动填充
@@ -34,6 +29,14 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
+    public short getType() {
+        return type;
+    }
+
+    public void setType(short type) {
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }
@@ -42,52 +45,12 @@ public class Employee implements Serializable {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public short getSort() {
+        return sort;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    public Integer getStatus() {
-        return Status;
-    }
-
-    public void setStatus(Integer status) {
-        Status = status;
+    public void setSort(short sort) {
+        this.sort = sort;
     }
 
     public LocalDateTime getCreateTime() {
@@ -124,15 +87,11 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Category{" +
                 "id=" + id +
+                ", type=" + type +
                 ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", sex='" + sex + '\'' +
-                ", idNumber='" + idNumber + '\'' +
-                ", Status=" + Status +
+                ", sort=" + sort +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", createUser=" + createUser +

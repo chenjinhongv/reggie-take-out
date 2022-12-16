@@ -1,9 +1,11 @@
 package com.hippo.reggietakeout.interceptor;
 
 import com.alibaba.fastjson.JSON;
+import com.hippo.reggietakeout.common.BaseContext;
 import com.hippo.reggietakeout.common.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
+import java.lang.ThreadLocal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +24,8 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
             response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
             return false;
         }
+        BaseContext.set((Long)request.getSession().getAttribute("employee"));
+        log.info("设置用户id");
         return true;
     }
 }

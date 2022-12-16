@@ -268,3 +268,25 @@ public class JacksonObjectMapper extends ObjectMapper {
     }
 ```
 
+#### job_5 员工编辑功能
+
+##### 按id查询用户信息
+
+> 从get请求路由中获取用户id
+>
+> 使用{变量}替换需要引用的路径中的变量
+>
+> @PathVariable(变量名)指定方法参数引用的变量
+
+```java
+    @GetMapping("/{id}")
+    public R<Employee> findById(@PathVariable("id") Long id){
+        Employee employee = employeeMapper.selectById(id);
+        if(employee != null){
+            return R.success(employee);
+        }else{
+            return R.error("user not exist");
+        }
+    }
+```
+
